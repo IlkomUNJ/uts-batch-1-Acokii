@@ -36,31 +36,33 @@ fun DashboardScreen(
 ) {
     val students = remember {
         mutableStateListOf(
-            Student(id = 10, name = "halo"),
-            Student(id = 10, name = "halo"),
-            Student(id = 10, name = "halo"),
-            Student(id = 10, name = "halo"),
+            Student(id = 10, name = "halo", address = "ya", phone = 10),
+            Student(id = 10, name = "halo", address = "ya", phone = 10),
+            Student(id = 10, name = "halo", address = "ya", phone = 10),
+            Student(id = 10, name = "halo", address = "ya", phone = 10),
         )
     }
     Scaffold(
         topBar = {
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.Bottom
-            ) {
-                Text(
-                    text = "Student Roster",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 28.sp,
-                    modifier = Modifier.padding(bottom = 8.dp, top = 30.dp)
-                )
-                IconButton(onClick = {
-                    navController.navigate("register")
-                }) {
-                    Icon(
-                        imageVector = Icons.Default.Add,
-                        contentDescription = "add student"
+            Surface (color = Color.Cyan){
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.Bottom,
+                ) {
+                    Text(
+                        text = "Student Roster",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 28.sp,
+                        modifier = Modifier.padding(bottom = 8.dp, top = 30.dp)
                     )
+                    IconButton(onClick = {
+                        navController.navigate("register")
+                    }) {
+                        Icon(
+                            imageVector = Icons.Default.Add,
+                            contentDescription = "add student"
+                        )
+                    }
                 }
             }
         }

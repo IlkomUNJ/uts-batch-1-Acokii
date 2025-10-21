@@ -29,6 +29,9 @@ fun RegisterScreen(
 ) {
     var name by remember { mutableStateOf("") }
     var id by remember { mutableStateOf("") }
+    var phone by remember { mutableStateOf("") }
+    var address by remember { mutableStateOf("") }
+
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -54,10 +57,28 @@ fun RegisterScreen(
             },
             label = { Text("name") },
 
-        )
+            )
+        OutlinedTextField(
+            value = phone,
+            onValueChange = { newText ->
+                phone = newText
+            },
+            label = { Text("name") },
+
+            )
+        OutlinedTextField(
+            value = address,
+            onValueChange = { newText ->
+                address = newText
+            },
+            label = { Text("name") },
+
+            )
         ElevatedButton(onClick = {
             name = ""
             id = ""
+            phone = ""
+            address = ""
         }) {
             Text("Register")
         }

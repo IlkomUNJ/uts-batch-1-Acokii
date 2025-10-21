@@ -6,5 +6,7 @@ import androidx.compose.runtime.remember
 
 data class Student(
     val id: Int,
-    val name: String
+    val name: String,
+    val phone: Int,
+    val address: String
 )
