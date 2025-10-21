@@ -44,12 +44,15 @@ fun DashboardScreen(
     }
     Scaffold(
         topBar = {
-            Row {
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.Bottom
+            ) {
                 Text(
                     text = "Student Roster",
                     fontWeight = FontWeight.Bold,
                     fontSize = 28.sp,
-                    modifier = Modifier.padding(bottom = 8.dp, top = 100.dp)
+                    modifier = Modifier.padding(bottom = 8.dp, top = 30.dp)
                 )
                 IconButton(onClick = {
                     navController.navigate("register")
