@@ -1,92 +1,70 @@
-package com.example.uts.features.login
+package com.example.uts.features.register
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Surface
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun LoginScreen(
+fun RegisterScreen(
     modifier: Modifier = Modifier,
     navController: NavController
-    ){
-    var username by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var wrongUser = false
-
+) {
+    var name by remember { mutableStateOf("") }
+    var id by remember { mutableStateOf("") }
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = "Login",
+            text = "Register",
             fontWeight = FontWeight.Bold,
             fontSize = 28.sp,
             modifier = Modifier.padding(bottom = 16.dp)
         )
-        if (wrongUser){
-            Text(
-                text = "username dan password salah",
-                color = Color.Red,
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Normal,
-                fontStyle = FontStyle.Italic
-            )
-        }
         OutlinedTextField(
-            value = username,
+            value = id,
             onValueChange = { newText ->
-                username = newText
+                id = newText
             },
-            label = { Text("Username") },
+            label = { Text("id") },
         )
         OutlinedTextField(
-            value = password,
+            value = name,
             onValueChange = { newText ->
-                password = newText
+                name = newText
             },
-            label = { Text("Password") },
-            visualTransformation = PasswordVisualTransformation()
+            label = { Text("name") },
 
         )
         ElevatedButton(onClick = {
-            if (username == "admin" && password == "0001"){
-                navController.navigate("dashboard")
-            }else{
-                wrongUser = true
-            }
+            name = ""
+            id = ""
         }) {
-            Text("Login")
+            Text("Register")
+        }
+        ElevatedButton(onClick = {
+            navController.popBackStack()
+        }) {
+            Text("Back")
         }
     }
-}
-
-@Composable
-@Preview
-fun LoginPreview(){
-    LoginScreen(
-        modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp, vertical = 8.dp),
-        navController = rememberNavController()
-    )
 }

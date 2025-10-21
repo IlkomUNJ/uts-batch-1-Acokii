@@ -19,7 +19,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.uts.features.dashboard.DashboardScreen
 import com.example.uts.features.login.LoginScreen
+import com.example.uts.features.register.RegisterScreen
 import com.example.uts.ui.theme.UTSTheme
 
 class MainActivity : ComponentActivity() {
@@ -43,21 +45,25 @@ fun MyAppNav() {
         startDestination = "login"
     ) {
         composable(route = "login") {
-            Column (
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ){
-                LoginScreen(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(horizontal = 16.dp, vertical = 8.dp),
-                    navController = navController
-                )
-            }
+            LoginScreen(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                navController = navController
+            )
         }
         composable(route = "dashboard") {
-
+            DashboardScreen(
+                modifier = Modifier
+                    .fillMaxSize(),
+                navController = navController
+            )
+        }
+        composable("register"){
+            RegisterScreen(
+                modifier = Modifier.fillMaxSize(),
+                navController
+            )
         }
     }
 
